@@ -23,7 +23,7 @@ trait CanCache
     /**
      * Get a new query builder instance for the connection.
      *
-     * @return \Illuminate\Database\Query\Builder
+     * @return \Watson\Rememberable\Query\Builder
      */
     protected function newBaseQueryBuilder()
     {
