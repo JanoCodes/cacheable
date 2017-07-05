@@ -10,8 +10,9 @@ class ServiceProvider extends ParentServiceProvider
 {
     public function boot()
     {
-        Cache::extend('secure_file', function ($app) {
-            return Cache::repository(new SecureFileStore);
+        Cache::extend('secure_file', function ($app, $config) {
+            return Cache::repository(new SecureFileStore($app->make('Illuminate\Filesystem\Filesystem'),
+                $config['path']));
         });
     }
 }

@@ -20,12 +20,25 @@
 
 namespace Jano\Cacheable\Cache;
 
+use Carbon\Carbon;
 use Exception;
 use Illuminate\Cache\FileStore;
 use Illuminate\Contracts\Encryption\DecryptException;
+use Illuminate\Filesystem\Filesystem;
 
 class SecureFileStore extends FileStore
 {
+    /**
+     * SecureFileStore constructor.
+     *
+     * @param Filesystem $files
+     * @param string $directory
+     */
+    public function __construct(Filesystem $files, $directory)
+    {
+        parent::__construct($files, $directory);
+    }
+
     /**
      * Store an item in the cache for a given number of minutes.
      *
